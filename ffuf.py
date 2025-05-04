@@ -45,17 +45,6 @@ def send_request(url, word, filters, data=None):
             response = requests.get(target_url, headers=headers, timeout=3.0, allow_redirects=False)
 
         with print_lock:
-            # Check if the response is a redirect
-            if response.status_code in [301, 302, 303, 307, 308]:
-                redirect_url = response.headers.get('Location', 'Unknown redirect target')
-                # Display the redirect information
-                sys.stdout.write("\r" + " " * 80 + "\r")  # Clear progress bar
-                print(f"[+] Found Redirect: {target_url} - Status: {response.status_code} - Redirected to: {redirect_url}")
-                if data:
-                    print(f"    - POST Data: {post_data}")
-                print_progress()  # Redraw progress bar
-                return
-
             # Check status code filter
             if 'fc' in filters and str(response.status_code) in filters['fc']:
                 return  # Skip if status code matches the filter
