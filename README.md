@@ -1,5 +1,5 @@
 # A Python Web Fuzzer
-Creating ffuf in python, basically
+Creating a basic ffuf in python, basically. All in one file, no crazy extra libraries. Bit slow tho LOL, call it SFUF (slow fuzzer u fool).
 
 Currently supports:
 - `-u` for URL
